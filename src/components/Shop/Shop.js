@@ -14,15 +14,17 @@ const Shop = () => {
     }, []);
     const handleCart = (selectedProduct) => {
         let newCart = [];
-        const exists = cart.find(product => product.id === selectedProduct);
+        const exists = cart.find(product => product.id === selectedProduct.id);
+        console.log(exists);
+
         if (!exists) {
             selectedProduct.quantity = 1;
             newCart = [...cart, selectedProduct];
         }
         else {
-            const rest = cart.filter(product => product !== selectedProduct);
-            selectedProduct = selectedProduct.quantity + 1;
-            newCart = [...rest, selectedProduct];
+            const rest = cart.filter(product => product.id !== selectedProduct.id);
+            exists.quantity = exists.quantity + 1;
+            newCart = [...rest, exists];
         }
         // const newCart = [...cart, selectedProduct];
         setCart(newCart);
