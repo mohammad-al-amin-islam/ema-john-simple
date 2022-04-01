@@ -1,22 +1,21 @@
 import React, { useEffect, useState } from 'react';
+import useProducts from '../../hooks/useProducts/useProducts';
 import { addToDb, storedCart } from '../../utilities/fakedb';
 import Cart from '../Cart/Cart';
 import Product from '../Product/Product';
 import './Shop.css'
 
 const Shop = () => {
-    const [products, setProducts] = useState([]);
+    const [products, setProducts] = useProducts();
     const [cart, setCart] = useState([]);
-    useEffect(() => {
+    /* useEffect(() => {
         fetch('products.json')
             .then(res => res.json())
             .then(data => setProducts(data));
-    }, []);
+    }, []); */
     const handleCart = (selectedProduct) => {
         let newCart = [];
         const exists = cart.find(product => product.id === selectedProduct.id);
-        console.log(exists);
-
         if (!exists) {
             selectedProduct.quantity = 1;
             newCart = [...cart, selectedProduct];
