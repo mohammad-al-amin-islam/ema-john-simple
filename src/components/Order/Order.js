@@ -8,6 +8,10 @@ import './Order.css'
 const Order = () => {
     const [products, setProducts] = useProducts();
     const [cart, setCart] = useCart(products);
+    const handleDeleteBtn = (deleteProduct) => {
+        const exist = cart.filter(product => product.id !== deleteProduct.id)
+        setCart(exist);
+    }
     return (
         <div className='shop'>
             <div className="review-items-container">
@@ -15,6 +19,7 @@ const Order = () => {
                     cart.map(product => <ReviewItem
                         product={product}
                         key={product.id}
+                        handleDeleteBtn={handleDeleteBtn}
                     ></ReviewItem>)
                 }
             </div>
