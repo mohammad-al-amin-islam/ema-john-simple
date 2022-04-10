@@ -13,6 +13,7 @@
 .form-title {
     font-weight: 400;
     font-size: 35px;
+    text-align: center;
 }
 
 .input-group {
@@ -33,6 +34,7 @@
     box-sizing: border-box;
     border-radius: 5px;
     font-size: 20px;
+    padding: 10px;
 }
 
 .form-submit {
@@ -42,6 +44,11 @@
     border: none;
     border-radius: 5px;
     font-size: 20px;
+    cursor: pointer;
+}
+
+.form-submit:hover {
+    background-color: rgba(255, 153, 0, 0.6);
 }
 
 .signup-area {
