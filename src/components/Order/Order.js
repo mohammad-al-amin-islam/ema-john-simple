@@ -9,11 +9,11 @@ import './Order.css'
 
 const Order = () => {
     const [products, setProducts] = useProducts();
-    const [cart, setCart] = useCart(products);
+    const [cart, setCart] = useCart();
     const handleDeleteBtn = (deleteProduct) => {
-        const exist = cart.filter(product => product.id !== deleteProduct.id)
+        const exist = cart.filter(product => product._id !== deleteProduct._id)
         setCart(exist);
-        removeFromDb(deleteProduct.id);
+        removeFromDb(deleteProduct._id);
     }
     return (
         <div className='shop'>
@@ -21,7 +21,7 @@ const Order = () => {
                 {
                     cart.map(product => <ReviewItem
                         product={product}
-                        key={product.id}
+                        key={product._id}
                         handleDeleteBtn={handleDeleteBtn}
                     ></ReviewItem>)
                 }
